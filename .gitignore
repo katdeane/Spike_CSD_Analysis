@@ -1,0 +1,15 @@
+/.venv
+
+*.kpi
+*.json
+*.xdat
+*.mat
+*.spikes
+*.jpg
+*.jpeg
+*.pdf
+*.fig
+*.docx
+*.xlsx
+*.txt
+*.csv
