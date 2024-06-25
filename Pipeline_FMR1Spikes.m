@@ -13,6 +13,16 @@ end
 homedir = pwd;
 addpath(genpath(homedir));
 
+
+
+if exist(fullfile('D:', 'Spike_CSD_Analysis'),'dir')
+    home_dir = 'D:\Spike_CSD_Analysis';
+elseif exist(fullfile('/', 'Users', 'carolinejia', 'Documents', 'GitHub', 'CSHL_GroupProject2'), 'dir')
+    home_dir = fullfile('/Users', 'carolinejia', 'Documents', 'CSHL_GroupProject2');
+else
+    error('Add your directory to this list (or rewrite this if there is a better way) - Kat')
+end
+
 % basic variables
 Group = {'MWT','MKO'};
 Condition = {'NoiseBurst','ClickTrain'};
