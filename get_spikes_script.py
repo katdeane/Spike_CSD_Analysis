@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import numpy as np
+import tqdm
 from radiens.utils.enums import SignalType
 from radiens.utils.util import dset_to_ntv_dict, make_time_range
 from radiens.videre_client import VidereClient
@@ -9,7 +10,7 @@ from scipy.io import savemat
 names = [ "MKO02_01"]
 for name in names:
     # set paths
-    data_path = "D:/Spike_CSD_Analysis/Data" #~/radix/data
+    data_path = "/Users/irajmallina/Documents/GitHub/Spike_CSD_Analysis/Data" #~/radix/data
     cont_data_bname = name + "_Spikes"
     spike_data_bname = name + "_Spikes_s1"
     spike_data_save_fname = spike_data_bname + ".mat"
