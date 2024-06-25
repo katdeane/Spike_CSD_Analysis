@@ -4,17 +4,6 @@
 
 clear; clc;
 
-% set working directory; change for your station
-if exist('D:\Spike_CSD_Analysis','dir')
-    cd('D:\Spike_CSD_Analysis');
-else
-    error('add your local repository as shown above')
-end
-homedir = pwd;
-addpath(genpath(homedir));
-
-
-
 if exist(fullfile('D:', 'Spike_CSD_Analysis'),'dir')
     home_dir = 'D:\Spike_CSD_Analysis';
 elseif exist(fullfile('/', 'Users', 'carolinejia', 'Documents', 'GitHub', 'CSHL_GroupProject2'), 'dir')
