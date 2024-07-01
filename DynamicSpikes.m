@@ -49,7 +49,7 @@ for iGro = 1:length(Group)
                 % labels - which neuron (not currently used)
                 % ntvldxs - which channel (0 - 31 == 1 - 32)
                 % timestamps - what time (s)
-                load([datafile '_s1.mat'],'ntvIdxs','timestamps')
+                load([datafile '_s0.mat'],'ntvIdxs','timestamps')
 
                 % neuronexus data converter for matlab to get timing data
                 % stimIn contains stimulus onset data at fs = 1000

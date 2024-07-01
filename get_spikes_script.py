@@ -7,12 +7,12 @@ from radiens.utils.util import dset_to_ntv_dict, make_time_range
 from radiens.videre_client import VidereClient
 from scipy.io import savemat
 
-names = [ "MKO02_01"]
+names = [ "MWT02_05","MWT02_06","MWT02_07","MWT02_08","MWT02_09","MWT02_10", "MWT02_11"]
 for name in names:
     # set paths
-    data_path = "/Users/irajmallina/Documents/GitHub/Spike_CSD_Analysis/Data" #~/radix/data
+    data_path = "D:\Spike_CSD_Analysis\Data" #~/radix/data
     cont_data_bname = name + "_Spikes"
-    spike_data_bname = name + "_Spikes_s1"
+    spike_data_bname = name + "_Spikes_s0"
     spike_data_save_fname = spike_data_bname + ".mat"
     spike_data_save_fpath = Path(
         data_path, spike_data_save_fname).expanduser().resolve()

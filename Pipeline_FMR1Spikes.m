@@ -12,8 +12,10 @@ else
     error('Add your directory to this list (or rewrite this if there is a better way) - Kat')
 end
 
+addpath(genpath(home_dir));
+
 % basic variables
-Group = {'MWT','MKO'};
+Group = {'MWT'};
 Condition = {'NoiseBurst','ClickTrain'};
 
 %% Single animal data sorting 
@@ -21,7 +23,7 @@ Condition = {'NoiseBurst','ClickTrain'};
 % data comes from get_spikes_script.py which uses the .spikes datatype from
 % Videre "offline spike sorting" after filtering in Curate with bandpass =
 % 300 - 5000 Hz 
-DynamicSpikes(homedir, Group, Condition)
+DynamicSpikes(home_dir, Group, Condition)
 
 %% Spike-LFP Coherence
 
