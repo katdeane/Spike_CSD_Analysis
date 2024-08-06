@@ -15,7 +15,7 @@ end
 addpath(genpath(home_dir));
 
 % basic variables
-Group = {'MWT'};
+Group = {'MKO'};
 Condition = {'NoiseBurst','ClickTrain'};
 
 %% Single animal data sorting 
