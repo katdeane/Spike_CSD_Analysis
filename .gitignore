@@ -13,4 +13,6 @@
 *.xlsx
 *.txt
 *.csv
+*.png
+*.cyberducksegment
 .DS_Store
