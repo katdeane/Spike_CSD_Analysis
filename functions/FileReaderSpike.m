@@ -1,6 +1,11 @@
 function [timerange,stimIn] = FileReaderSpike(file)
 % This converts the data from allego/curate and downsamples it to fs = 1000
 
+% for spikes, the MINIMUM files needed here are 
+% *_Spikes.xdat.json
+% *_Spikes_data.xdat (the big one)
+% *_Spikes_timestamp.xdat
+
 % initalized NeuroNexus conversion function
 reader = allegoXDatFileReaderR2019b;
 

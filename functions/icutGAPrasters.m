@@ -1,4 +1,4 @@
-function DataOut = icutrasters(file, stimIn, spikeMatrix, checkStimList, BL, stimdur, ITI, thistype)
+function DataOut = icutGAPrasters(file, stimIn, spikeMatrix, checkStimList, BL, stimdur, ITI, thistype)
 % this function takes any type of data input and returns truncated epochs
 % sorted by stimulus
 
@@ -23,6 +23,39 @@ end
 crossover = diff(location);
 onsets = find(crossover == 1);
 
+
+% the first stim is marked by a down peak around 300 ms after onset. It's
+% very consistent but the resting channel value is variable. We have then a
+% dynamic lower threshold to check for the down peak after the stim onset
+% time
+
+plot(stimIn(1:9000));
+ylim([-0.1 0.1])
+xline(onsets(1))
+if (onsets(1)-3770) > 0
+
+    firstsuspect = onsets(1)-3770;
+
+    % take the mean and std of the 40 seconds around the stim 
+    meansus = mean(stimIn(firstsuspect-20:firstsuspect+20));
+    stdsus  = std(stimIn(firstsuspect-20:firstsuspect+20));
+    
+    % set the threshold for 10*std below mean (very little variability)
+    lowthreshold = meansus-(stdsus*15); %microvolts, constant input of at least 0.1 through analog channel from RZ6 to XDAC 
+    lowlocation = lowthreshold >= stimIn(firstsuspect:firstsuspect+500); % 0 is above, 1 is below 
+    lowcrossover = diff(lowlocation);
+    
+    xline(firstsuspect)
+    yline(meansus)
+    yline(meansus-stdsus)
+    yline(lowthreshold,'LineWidth',2)
+
+    if ~isempty(find(lowcrossover == 1,1))
+        onsets = [firstsuspect onsets];
+    end
+
+end
+
 %% timing info
 
 % stim duration + ITI (ms)
@@ -34,7 +67,7 @@ if matches(thistype, 'Tonotopy') || matches(thistype, 'ClickRate') ...
         || matches(thistype, 'gapASSRRate')
     % pre-psuedorandomized tone list for this subject
     stimList = readmatrix([file(1:end-9) thistype '.txt'])';
-    shortlist = unique(stimList(2:end)); 
+    shortlist = unique(stimList);
     shortlist = shortlist(shortlist ~= 0);
 
     % click list is of duration between clicks so 8.33 = 120 Hz

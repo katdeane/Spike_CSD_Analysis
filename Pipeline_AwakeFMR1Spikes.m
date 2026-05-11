@@ -14,9 +14,10 @@ end
 
 addpath(genpath(homedir));
 set(0, 'DefaultFigureRenderer', 'painters');
+cd(homedir)
 
 % basic variables
-Group = {'MWT','MKO'};
+Group = {'AWT','AKO'};
 % Condition = {'ClickTrain','gapASSR'};
 Condition = {'NoiseBurst','ClickTrain','Spontaneous','gapASSR','Chirp'};
 
@@ -25,7 +26,7 @@ Condition = {'NoiseBurst','ClickTrain','Spontaneous','gapASSR','Chirp'};
 % data comes from get_spikes_script.py which uses the .spikes datatype from
 % Videre "offline spike sorting" after filtering in Curate with bandpass =
 % 300 - 5000 Hz 
-DynamicSpikes(homedir, Group, Condition,'Anesthetized')
+DynamicSpikes(homedir, Group, Condition,'Awake')
 
 %% single subject visualization
 
@@ -37,7 +38,7 @@ DynamicSpikes(homedir, Group, Condition,'Anesthetized')
 %% Group PSTH
 % yes you do have to run this, it normalizes the data to channel number per
 % layer
-Group_Avg_raster(homedir, Group, Condition, 'Anesthetized')
+Group_Avg_raster(homedir, Group, Condition, 'Awake')
 
 %% Detect up-states in spontaneous data 
 % the dream
@@ -45,8 +46,8 @@ Group_Avg_raster(homedir, Group, Condition, 'Anesthetized')
 %% Get spike data for comparison
 % spike mean firing rate, fano factor, spike count/rate after stim onset.
 % Subject data was already pulled from Group_Avg_raster 
-SpikeStats(homedir,'MWT','MKO')
-SpikeFigsCut(homedir,'MWT','MKO')
+SpikeStats(homedir,'AWT','AKO')
+SpikeFigsCut(homedir,'AWT','AKO')
 
 %% The dream... Spike-LFP Coherence
 
